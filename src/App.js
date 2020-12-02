@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
 import Todos from "./components/Todos";
+import NavBar from './layouts/navBar';
+import "./App.css";
+import AddTodo from "./components/AddTodo";
 
 class App extends Component {
   state = {
@@ -23,10 +25,34 @@ class App extends Component {
     ],
   };
 
+  handleChange = (id) => {
+    let todos = [...this.state.todos];
+    todos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+    this.setState({ todos });
+  };
+
+  handleDelete = (id) => {
+    let todos = [...this.state.todos];
+    todos = todos.filter(todo => todo.id !== id);
+    this.setState({ todos });
+    console.log("deleted", id);
+  };
+
   render() {
     return (
-      <div className="App">
-        <Todos todos={this.state.todos} />
+      <div className="App Container">
+        <NavBar />
+        <AddTodo />
+        <Todos
+          todos={this.state.todos}
+          markComplete={this.handleChange}
+          onDelete={this.handleDelete}
+        />
       </div>
     );
   }
