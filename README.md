@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# A Todo App
+This aplication allows you create and manage your todos
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
