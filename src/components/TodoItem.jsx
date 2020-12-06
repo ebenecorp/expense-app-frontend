@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import propTypes from "prop-types";
+import propTypes from "prop-types";
 
 class TodoItem extends Component {
   getStyle = () => {
@@ -7,7 +7,7 @@ class TodoItem extends Component {
       background: "#f4f4f4",
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: this.props.todo.isComplete ? "line-through" : "none",
+      textDecoration: this.props.todo.complete ? "line-through" : "none",
     };
   };
 
@@ -29,7 +29,9 @@ class TodoItem extends Component {
   }
 }
 
-// TodoItem.propTypes = {
-//   todo: propTypes.object.isRequired,
-// };
+TodoItem.propTypes = {
+  todo: propTypes.object.isRequired,
+  onDelete: propTypes.func.isRequired,
+  markComplete: propTypes.func.isRequired,
+};
 export default TodoItem;
